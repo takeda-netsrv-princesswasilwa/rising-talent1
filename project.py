@@ -8,7 +8,7 @@ def user_input() -> object:
     parser.add_argument(
         '--interview',
         '-i',
-        const=False,
+        const=True,
         dest='interview',
         nargs='?',
         help='Calls the interview interface'
@@ -45,7 +45,16 @@ def user_input() -> object:
         default=None,
         help='Set the common column for data'
     )
-    return parser.parse_args()
+    ## Aggregating all User-Input parameters
+    options = parser.parse_args()
+    #if options.verbose:
+    print( f"\nInput Parameters:\n" )
+    for option in vars( options ):
+        print( f"{option} = {getattr( options, option )}" )
+    print()
+    # # Returns: <class 'argparse.Namespace'>
+    return options
+
 
 # compare main with sources
 
@@ -61,7 +70,7 @@ def interview():
 def main():
     ##  User-Input options
     options = user_input()
-    if options.interview == True:
+    if options.interview is True:
         interview()
         
 
