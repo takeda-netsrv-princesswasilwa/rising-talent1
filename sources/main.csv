@@ -1,0 +1,50 @@
+mac address,machine,ip address,city,state,country
+00:11:22:33:44:55,Computer1,192.168.1.100,New York,NY,USA
+AA:BB:CC:DD:EE:FF,Laptop1,10.0.0.2,San Francisco,CA,USA
+11:22:33:44:55:66,Desktop1,172.16.0.5,Los Angeles,CA,USA
+BB:CC:DD:EE:FF:AA,Workstation1,192.168.0.10,Miami,FL,USA
+CC:DD:EE:FF:AA:BB,Server1,192.168.2.20,Chicago,IL,USA
+DD:EE:FF:AA:BB:CC,Computer2,10.0.0.15,Houston,TX,USA
+22:33:44:55:66:77,Laptop2,172.16.1.8,Seattle,WA,USA
+EE:FF:AA:BB:CC:DD,Desktop2,192.168.1.50,Boston,MA,USA
+33:44:55:66:77:88,Workstation2,192.168.0.100,Atlanta,GA,USA
+44:55:66:77:88:99,Server2,192.168.2.5,Denver,CO,USA
+55:66:77:88:99:AA,Computer3,10.0.0.25,Dallas,TX,USA
+66:77:88:99:AA:BB,Laptop3,172.16.1.15,San Diego,CA,USA
+77:88:99:AA:BB:CC,Desktop3,192.168.1.70,Phoenix,AZ,USA
+88:99:AA:BB:CC:DD,Workstation3,192.168.0.120,Austin,TX,USA
+99:AA:BB:CC:DD:EE,Server3,192.168.2.8,Portland,OR,USA
+AA:BB:CC:DD:EE:FF,Computer4,10.0.0.30,Detroit,MI,USA
+BB:CC:DD:EE:FF:AA,Laptop4,172.16.1.25,Minneapolis,MN,USA
+CC:DD:EE:FF:AA:BB,Desktop4,192.168.1.90,Philadelphia,PA,USA
+DD:EE:FF:AA:BB:CC,Workstation4,192.168.0.130,San Antonio,TX,USA
+EE:FF:AA:BB:CC:DD,Server4,192.168.2.15,Washington,DC,USA
+FF:AA:BB:CC:DD:EE,Computer5,10.0.0.35,Orlando,FL,USA
+11:22:33:44:55:66,Laptop5,172.16.1.35,Charlotte,NC,USA
+22:33:44:55:66:77,Desktop5,192.168.1.100,Indianapolis,IN,USA
+33:44:55:66:77:88,Workstation5,192.168.0.140,Columbus,OH,USA
+44:55:66:77:88:99,Server5,192.168.2.25,San Jose,CA,USA
+55:66:77:88:99:AA,Computer6,10.0.0.40,Baltimore,MD,USA
+66:77:88:99:AA:BB,Laptop6,172.16.1.45,Jacksonville,FL,USA
+77:88:99:AA:BB:CC,Desktop6,192.168.1.110,Nashville,TN,USA
+88:99:AA:BB:CC:DD,Workstation6,192.168.0.150,Milwaukee,WI,USA
+99:AA:BB:CC:DD:EE,Server6,192.168.2.30,Raleigh,NC,USA
+AA:BB:CC:DD:EE:FF,Computer7,10.0.0.50,Memphis,TN,USA
+BB:CC:DD:EE:FF:AA,Laptop7,172.16.1.55,Kansas City,MO,USA
+CC:DD:EE:FF:AA:BB,Desktop7,192.168.1.120,Louisville,KY,USA
+DD:EE:FF:AA:BB:CC,Workstation7,192.168.0.160,Albuquerque,NM,USA
+EE:FF:AA:BB:CC:DD,Server7,192.168.2.35,Tulsa,OK,USA
+FF:AA:BB:CC:DD:EE,Computer8,10.0.0.55,Oklahoma City,OK,USA
+11:22:33:44:55:66,Laptop8,172.16.1.65,El Paso,TX,USA
+22:33:44:55:66:77,Desktop8,192.168.1.130,Tampa,FL,USA
+33:44:55:66:77:88,Workstation8,192.168.0.170,Seattle,WA,USA
+44:55:66:77:88:99,Server8,192.168.2.40,Arlington,VA,USA
+55:66:77:88:99:AA,Computer9,10.0.0.60,Cleveland,OH,USA
+66:77:88:99:AA:BB,Laptop9,172.16.1.75,Pittsburgh,PA,USA
+77:88:99:AA:BB:CC,Desktop9,192.168.1.140,Cincinnati,OH,USA
+88:99:AA:BB:CC:DD,Workstation9,192.168.0.180,Las Vegas,NV,USA
+99:AA:BB:CC:DD:EE,Server9,192.168.2.45,Buffalo,NY,USA
+AA:BB:CC:DD:EE:FF,Computer10,10.0.0.65,Birmingham,AL,USA
+BB:CC:DD:EE:FF:AA,Laptop10,172.16.1.85,Hartford,CT,USA
+CC:DD:EE:FF:AA:BB,Desktop10,192.168.1.150,Richmond,VA,USA
+DD:EE:FF:AA:BB:CC,Workstation10,192.168.0.190,New Orleans,LA,
