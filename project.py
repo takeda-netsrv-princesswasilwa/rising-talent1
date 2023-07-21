@@ -8,9 +8,9 @@ def user_input() -> object:
     parser.add_argument(
         '--interview',
         '-i',
+        const=False,
         dest='interview',
-        type=bool,
-        default=False,
+        nargs='?',
         help='Calls the interview interface'
     )
     parser.add_argument(
@@ -47,9 +47,24 @@ def user_input() -> object:
     )
     return parser.parse_args()
 
+# compare main with sources
+
+# merge files to dictionary
+def merge_sources():
+    main()
+
+
+def interview():
+    print("This is an interview.")
+    exit()
+
 def main():
     ##  User-Input options
-    user_input()
+    options = user_input()
+    if options.interview == True:
+        interview()
+        
+
 
 if __name__ == "__main__":
     main()
