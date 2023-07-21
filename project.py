@@ -1,57 +1,55 @@
 #!/usr/bin/env python
 
+import argparse
+
 def user_input() -> object:
     ## Processing command-line parameters
     parser = argparse.ArgumentParser( description='Processing User-Input parameters' )
     parser.add_argument(
-        '--pre-check',
-        '-l',
-        dest='precheck',
-        type=str,
-        default=None,
-        help='Pre-Check Source File! '
-    )
-    parser.add_argument(
-        '--post-check',
-        '-r',
-        dest='postcheck',
-        type=str,
-        default=None,
-        help='Post-Check Source File! '
-    )
-    parser.add_argument(
-        '--output',
-        '-o',
-        dest='output',
-        type=str,
-        default=None,
-        help='HTML Output File! '
-    )
-    parser.add_argument(
-        '--width',
-        '-w',
-        dest='width',
-        type=int,
-        default='80',
-        help='Panels Column Width! '
-    )
-    parser.add_argument(
-        '--verbose',
-        '-v',
-        const=True,
+        '--interview',
+        '-i',
+        dest='interview',
+        type=bool,
         default=False,
-        dest='verbose',
-        nargs='?',
-        help='Enable|Disable verbosity'
+        help='Calls the interview interface'
     )
-    ## Aggregating all User-Input parameters
-    options = parser.parse_args()
-    # if options.verbose:
-    #     print( f"\nInput Parameters:\n" )
-    #     for option in vars( options ):
-    #         print( f"{option} = {getattr( options, option )}" )
-    # print()
-    # # Returns: <class 'argparse.Namespace'>
-    return options
+    parser.add_argument(
+        '--main_csv',
+        '-m',
+        dest='main_csv',
+        type=str,
+        default=None,
+        help='Imports the main CSV file'
+    )
+    parser.add_argument(
+        '--source_csv',
+        '-s',
+        dest='source_csv',
+        type=str,
+        default=None,
+        help='Imports the source CSV file'
+    )
+    parser.add_argument(
+        '--report_csv',
+        '-r',
+        dest='report_csv',
+        type=str,
+        default=None,
+        help='Exports the report CSV file'
+    )
+    parser.add_argument(
+        '--common_column',
+        '-c',
+        dest='common_column',
+        type=str,
+        default=None,
+        help='Set the common column for data'
+    )
+    return parser.parse_args()
 
-user_input()
+def main():
+    ##  User-Input options
+    user_input()
+
+if __name__ == "__main__":
+    main()
