@@ -32,9 +32,9 @@ def user_input():
         help='Imports the source CSV file'
     )
     parser.add_argument(
-        '--report_csv',
+        '--report_xlsx',
         '-r',
-        dest='report_csv',
+        dest='report_xlsx',
         type=str,
         default=None,
         help='Exports the report Excel file'
@@ -67,9 +67,9 @@ def source_csv():
     return source_csv_path
     exit()
 
-def report_csv():
-    report_csv_path = api_options.report_csv
-    return report_csv_path
+def report_xlsx():
+    report_xlsx_path = api_options.report_xlsx
+    return report_xlsx_path
     exit()
 
 # Returns common_column when called
@@ -89,7 +89,7 @@ def main():
             main_csv()
         if api_options.source_csv is not None:
             source_csv()
-        if api_options.report_csv is not None:
+        if api_options.report_xlsx is not None:
             report_csv()
         if api_options.common_column is not None:
             common_column()
