@@ -9,6 +9,14 @@ def user_input():
     # Code sourced from Eduardo Valdes
     parser = argparse.ArgumentParser( description='User-Input parameters' )
     parser.add_argument(
+        '--help',
+        '-h',
+        const=True,
+        dest='help_parameters',
+        nargs='?',
+        help='Show help for parameters'
+    )
+    parser.add_argument(
         '--interview',
         '-i',
         const=True,
@@ -54,8 +62,15 @@ def user_input():
     # Returns: User-Input as the object:  options
     return options
 
+def help_parameters():
+    if user_input.help_parameters:
+        print( f"\nInput Parameters:\n" )
+        for parameter in vars( help_parameters ):
+            print( f"{parameter} = {getattr( help_parameters, parameter )}" )
+    exit()
+
 def interview():
-    print("This is an interview.")
+    print("This is going to be the interview.")
     exit()
 
 def main_csv():
@@ -87,6 +102,8 @@ def main():
     global api_options
     try:
         api_options = user_input()
+        if api_options.help_parameters is True:
+            help_parameters()
         if api_options.interview is True:
             interview()
         if api_options.main_csv is not None:
