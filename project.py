@@ -90,7 +90,7 @@ def main():
         if api_options.source_csv is not None:
             source_csv()
         if api_options.report_xlsx is not None:
-            report_csv()
+            report_xlsx()
         if api_options.common_column is not None:
             common_column()
     except Exception as script_error:
