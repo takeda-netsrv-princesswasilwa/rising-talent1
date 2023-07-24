@@ -3,6 +3,7 @@
 import argparse
 
 
+
 def user_input():
     # Command-line parameters
     # Code sourced from Eduardo Valdes
@@ -70,6 +71,9 @@ def source_csv():
 def report_xlsx():
     report_xlsx_path = api_options.report_xlsx
     return report_xlsx_path
+def report_csv():
+    report_csv_path = api_options.report_csv
+    return report_csv_path
     exit()
 
 # Returns common_column when called
