@@ -2,6 +2,7 @@
 
 import argparse
 
+
 def user_input():
     # Command-line parameters
     # Code sourced from Eduardo Valdes
@@ -57,23 +58,29 @@ def interview():
     exit()
 
 def main_csv():
-    print("This is going to be the main file.")
+    main_csv_path = api_options.main_csv
+    return main_csv_path
     exit()
 
 def source_csv():
-    print("This is going to be the source.")
+    source_csv_path = api_options.source_csv
+    return source_csv_path
     exit()
 
 def report_csv():
-    print("This is going to be the report file.")
+    report_csv_path = api_options.report_csv
+    return report_csv_path
     exit()
 
+# Returns common_column when called
 def common_column():
-    print("This is going to be the common column.")
+    search_column = api_options.common_column
+    return search_column
     exit()
 
 def main():
     #  User-Input options
+    global api_options
     try:
         api_options = user_input()
         if api_options.interview is True:
