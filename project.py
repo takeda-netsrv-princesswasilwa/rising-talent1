@@ -8,6 +8,15 @@ def user_input():
     # Code sourced from Eduardo Valdes
     parser = argparse.ArgumentParser( description='User-Input parameters' )
     parser.add_argument(
+        '--help_log',
+        '-hl',
+        default=True,
+        type=str,
+        dest='help_parameters',
+        #nargs='?',
+        help='Show help for parameters'
+    )
+    parser.add_argument(
         '--interview',
         '-i',
         const=True,
@@ -116,6 +125,8 @@ def main():
 
     try:
         api_options = user_input()
+        if api_options.help_parameters is True:
+            help_parameters()
         if api_options.interview is True:
             interview()
         if api_options.main_csv is not None:
