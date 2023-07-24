@@ -3,7 +3,10 @@
 import argparse
 import re
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71a25a2 (Removed some code and added empty print functions)
 def user_input():
     # Command-line parameters
     # Code sourced from Eduardo Valdes
@@ -54,7 +57,10 @@ def user_input():
     # Returns: User-Input as the object:  options
     return options
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71a25a2 (Removed some code and added empty print functions)
 def interview():
     main_csv_path = input("Enter main CSV path: ")
     main_csv_path = main_csv(main_csv_path, True)
@@ -115,6 +121,7 @@ def common_column(interview_request = False):
 def main():
     #  User-Input options
     global api_options
+
     try:
         api_options = user_input()
         if api_options.interview is True:
