@@ -1,2 +1,2 @@
-Author: Albert Osei (<Albert.osei@takeda.com>) </br>
+Author: Albert Osei (<Albert.osei@takeda.com>)
 Co-Author: Nathan Seldomridge
