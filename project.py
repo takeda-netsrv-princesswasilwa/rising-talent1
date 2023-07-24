@@ -11,7 +11,8 @@ def user_input():
     parser.add_argument(
         '--help',
         '-h',
-        const=True,
+        #const=True,
+        default=False,
         dest='help_parameters',
         nargs='?',
         help='Show help for parameters'
@@ -63,8 +64,8 @@ def user_input():
     return options
 
 def help_parameters():
-    if user_input.help_parameters:
-        print( f"\nInput Parameters:\n" )
+    if user_input().help_parameters:
+        print( "Input Parameters:" )
         for parameter in vars( help_parameters ):
             print( f"{parameter} = {getattr( help_parameters, parameter )}" )
     exit()
