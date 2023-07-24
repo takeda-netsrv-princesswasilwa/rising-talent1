@@ -1,1 +1,2 @@
-Author: Albert Osei (DevOps)
+Author: Albert Osei (<Albert.osei@takeda.com>)
+Nathan Seldomridge
