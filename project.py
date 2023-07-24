@@ -2,9 +2,10 @@
 
 import argparse
 
-def user_input() -> object:
-    ## Processing command-line parameters
-    parser = argparse.ArgumentParser( description='Processing User-Input parameters' )
+def user_input():
+    # Command-line parameters
+    # Code sourced from Eduardo Valdes
+    parser = argparse.ArgumentParser( description='User-Input parameters' )
     parser.add_argument(
         '--interview',
         '-i',
@@ -35,7 +36,7 @@ def user_input() -> object:
         dest='report_csv',
         type=str,
         default=None,
-        help='Exports the report CSV file'
+        help='Exports the report Excel file'
     )
     parser.add_argument(
         '--common_column',
@@ -45,35 +46,48 @@ def user_input() -> object:
         default=None,
         help='Set the common column for data'
     )
-    ## Aggregating all User-Input parameters
+    # Aggregating all User-Input parameters
     options = parser.parse_args()
-    #if options.verbose:
-    print( f"\nInput Parameters:\n" )
-    for option in vars( options ):
-        print( f"{option} = {getattr( options, option )}" )
-    print()
-    # # Returns: <class 'argparse.Namespace'>
+    
+    # Returns: User-Input as the object:  options
     return options
-
-
-# compare main with sources
-
-# merge files to dictionary
-def merge_sources():
-    main()
-
 
 def interview():
     print("This is an interview.")
     exit()
 
-def main():
-    ##  User-Input options
-    options = user_input()
-    if options.interview is True:
-        interview()
-        
+def main_csv():
+    print("This is going to be the main file.")
+    exit()
 
+def source_csv():
+    print("This is going to be the source.")
+    exit()
+
+def report_csv():
+    print("This is going to be the report file.")
+    exit()
+
+def common_column():
+    print("This is going to be the common column.")
+    exit()
+
+def main():
+    #  User-Input options
+    try:
+        api_options = user_input()
+        if api_options.interview is True:
+            interview()
+        if api_options.main_csv is not None:
+            main_csv()
+        if api_options.source_csv is not None:
+            source_csv()
+        if api_options.report_csv is not None:
+            report_csv()
+        if api_options.common_column is not None:
+            common_column()
+    except Exception as script_error:
+        print({"Type": type(script_error), "Error": script_error})
 
 if __name__ == "__main__":
     main()
