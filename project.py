@@ -70,7 +70,7 @@ def interview():
     return main_csv_path_final, source_csv_path_final, report_xlsx_path_final, search_column
 
 def input_parser(file_path, file_which, file_type, file_api, interview_request_final):
-    if interview_request_final is False:
+    if interview_request_final is True:
         print(file_api)
         print("testing1")
         return file_api
