@@ -33,9 +33,9 @@ def user_input():
         help='Imports the source CSV file'
     )
     parser.add_argument(
-        '--report_excel',
+        '--report_xlsx',
         '-r',
-        dest='report_excel',
+        dest='report_xlsx',
         type=str,
         default=None,
         help='Exports the report Excel file'
@@ -65,13 +65,13 @@ def interview():
         print("Improper file. Format: *.csv")
         source_csv_path = input("Enter source CSV path: ")
     
-    report_excel_path = input("Enter report Excel path: ")
-    while re.match(r"\w*(.xlsx)$", report_excel_path.lower()) is None:
+    report_xlsx_path = input("Enter report XLSX path: ")
+    while re.match(r"\w*(.xlsx)$", report_xlsx_path.lower()) is None:
         print("Improper file. Format: *.xlsx")
         main_csv_path = input("Enter main Excel path: ")
     
     search_column = input("Enter common column: ")
-    return main_csv_path, source_csv_path, report_excel_path, search_column
+    return main_csv_path, source_csv_path, report_xlsx_path, search_column
     
     exit()
 
@@ -87,9 +87,9 @@ def source_csv():
     
     exit()
 
-def report_csv():
-    report_csv_path = api_options.report_csv
-    return report_csv_path
+def report_xlsx():
+    report_xlsx_path = api_options.report_csv
+    return report_xlsx_path
     
     exit()
 
@@ -111,8 +111,8 @@ def main():
             main_csv()
         if api_options.source_csv is not None:
             source_csv()
-        if api_options.report_csv is not None:
-            report_csv()
+        if api_options.report_xlsx is not None:
+            report_xlsx()
         if api_options.common_column is not None:
             common_column()
     except Exception as script_error:
