@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import re
 
 
 def user_input():
@@ -32,9 +33,9 @@ def user_input():
         help='Imports the source CSV file'
     )
     parser.add_argument(
-        '--report_csv',
+        '--report_excel',
         '-r',
-        dest='report_csv',
+        dest='report_excel',
         type=str,
         default=None,
         help='Exports the report Excel file'
@@ -54,28 +55,49 @@ def user_input():
     return options
 
 def interview():
-    print("This is an interview.")
+    main_csv_path = input("Enter main CSV path: ")
+    while re.match(r"\w*(.csv)$", main_csv_path.lower()) is None:
+        print("Improper file. Format: *.csv")
+        main_csv_path = input("Enter main CSV path: ")
+    
+    source_csv_path = input("Enter source CSV path: ")
+    while re.match(r"\w*(.csv)$", source_csv_path.lower()) is None:
+        print("Improper file. Format: *.csv")
+        source_csv_path = input("Enter source CSV path: ")
+    
+    report_excel_path = input("Enter report Excel path: ")
+    while re.match(r"\w*(.xlsx)$", report_excel_path.lower()) is None:
+        print("Improper file. Format: *.xlsx")
+        main_csv_path = input("Enter main Excel path: ")
+    
+    search_column = input("Enter common column: ")
+    return main_csv_path, source_csv_path, report_excel_path, search_column
+    
     exit()
 
 def main_csv():
     main_csv_path = api_options.main_csv
     return main_csv_path
+    
     exit()
 
 def source_csv():
     source_csv_path = api_options.source_csv
     return source_csv_path
+    
     exit()
 
 def report_csv():
     report_csv_path = api_options.report_csv
     return report_csv_path
+    
     exit()
 
 # Returns common_column when called
 def common_column():
     search_column = api_options.common_column
     return search_column
+    
     exit()
 
 def main():
@@ -84,7 +106,7 @@ def main():
     try:
         api_options = user_input()
         if api_options.interview is True:
-            interview()
+            print(interview())
         if api_options.main_csv is not None:
             main_csv()
         if api_options.source_csv is not None:
