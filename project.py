@@ -64,20 +64,27 @@ def user_input():
 
 def interview():
     main_csv_path = input("Enter main CSV path: ")
-    main_csv_path = main_csv(main_csv_path, True)
+
+    while re.match(r"\w*(.csv)$", main_csv_path.lower()) is None:
+        print("Improper file. Format: *.csv")
+        main_csv_path = input("Enter main CSV path: ")
     
     source_csv_path = input("Enter source CSV path: ")
-    source_csv_path = source_csv(source_csv_path, True)
+    while re.match(r"\w*(.csv)$", source_csv_path.lower()) is None:
+        print("Improper file. Format: *.csv")
+        source_csv_path = input("Enter source CSV path: ")
     
     report_xlsx_path = input("Enter report XLSX path: ")
-    report_xlsx_path = report_xlsx(report_xlsx_path, True)
+    while re.match(r"\w*(.xlsx)$", report_xlsx_path.lower()) is None:
+        print("Improper file. Format: *.xlsx")
+        main_csv_path = input("Enter main Excel path: ")
     
     search_column = input("Enter common column: ")
-    
     return main_csv_path, source_csv_path, report_xlsx_path, search_column
     
     exit()
 
+<<<<<<< HEAD
 def input_parser(file_which, file_type, file_spelled, file_api, interview_request_final):
     if interview_request_final is False:
         return file_api
@@ -128,7 +135,7 @@ def main():
         if api_options.help_parameters is True:
             help_parameters()
         if api_options.interview is True:
-            interview()
+            print(interview())
         if api_options.main_csv is not None:
             main_csv()
         if api_options.source_csv is not None:
