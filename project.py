@@ -69,23 +69,27 @@ def interview():
     
     return main_csv_path_final, source_csv_path_final, report_xlsx_path_final, search_column
 
-def input_parser(file_path, file_which, file_type, file_spelled, file_api, interview_request_final):
+def input_parser(file_path, file_which, file_type, file_api, interview_request_final):
     if interview_request_final is False:
+        print(file_api)
+        print("testing1")
         return file_api
     else:
         while re.match(rf"\w*(.{file_type})$", file_path.lower()) is None:
             print(f"Improper file. Format: *.{file_type}")
-            file_path = input(f"Enter {file_which} {file_spelled} path: ")
+            file_path = input(f"Enter {file_which} {file_type.upper()} path: ")
+            print("testing2")
+            print(file_path)
             return file_path
 
 def main_csv(file_path,interview_request = False):
-    input_parser(file_path, "main", "csv", "CSV", api_options.main_csv, interview_request)
+    input_parser(file_path, "main", "csv", api_options.main_csv, interview_request)
 
 def source_csv(file_path,interview_request = False):
-    input_parser(file_path, "source", "csv", "CSV", api_options.source_csv, interview_request)
+    input_parser(file_path, "source", "csv", api_options.source_csv, interview_request)
 
 def report_xlsx(file_path,interview_request = False):
-    input_parser(file_path, "report", "xslx", "XSLX", api_options.main_csv, interview_request)
+    input_parser(file_path, "report", "xlsx", api_options.main_csv, interview_request)
 
 # Returns common_column when called
 def common_column(interview_request = False):
