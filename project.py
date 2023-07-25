@@ -31,11 +31,12 @@ def user_input():
         help='Imports the source CSV file'
     )
     parser.add_argument(
-        '--report_csv',
+        '--report_xlsx',
         '-r',
-        dest='report_csv',
+        dest='report_xlsx',
         type=str,
         default=None,
+        help='Exports the report Excel file'
         help='Exports the report Excel file'
     )
     parser.add_argument(
@@ -47,7 +48,10 @@ def user_input():
         help='Set the common column for data'
     )
     # Aggregating all User-Input parameters
+    # Aggregating all User-Input parameters
     options = parser.parse_args()
+    
+    # Returns: User-Input as the object:  options
     
     # Returns: User-Input as the object:  options
     return options
@@ -56,38 +60,14 @@ def interview():
     print("This is an interview.")
     exit()
 
-def main_csv():
-    print("This is going to be the main file.")
-    exit()
-
-def source_csv():
-    print("This is going to be the source.")
-    exit()
-
-def report_csv():
-    print("This is going to be the report file.")
-    exit()
-
-def common_column():
-    print("This is going to be the common column.")
-    exit()
-
 def main():
-    #  User-Input options
-    try:
-        api_options = user_input()
-        if api_options.interview is True:
-            interview()
-        if api_options.main_csv is not None:
-            main_csv()
-        if api_options.source_csv is not None:
-            source_csv()
-        if api_options.report_csv is not None:
-            report_csv()
-        if api_options.common_column is not None:
-            common_column()
-    except Exception as script_error:
-        print({"Type": type(script_error), "Error": script_error})
+    ##  User-Input options
+    options = user_input()
+    if options.interview is True:
+        interview()
+        
+
 
 if __name__ == "__main__":
     main()
+
