@@ -6,7 +6,7 @@ import sys
 
 
 def user_input():
-    # Command-line parameters
+    """Command-line parameters"""
     # user_input sourced from Eduardo Valdes
     parser = argparse.ArgumentParser( description='User-Input parameters' )
     parser.add_argument(
@@ -45,11 +45,11 @@ def user_input():
     # Aggregating all User-Input parameters
     options = parser.parse_args()
     
-    # Returns: User-Input as the object:  options
+    # Returns: User-Input as the object: options
     return options
 
-# Requests manual input
 def interview():
+    """Requests manual input"""
     main_csv_path = input("Enter main CSV path: ")
     main_csv_path_final = main_csv(main_csv_path, True)
     
@@ -63,8 +63,20 @@ def interview():
     
     return main_csv_path_final, source_csv_path_final, report_xlsx_path_final, search_column
 
-# Parses input
+# First input is file path,
+# Second input is main, source or report,
+# Third input is .csv or .xlsx,
+# Fourth input flags if an interview is required.
+
+# If interview flag does not exist create an item list,
+# and if file path is a list confirm file type matches, append new list and return new list,
+# or if file path is not a list confirm file type matches and return file path.
+
+# Else if interview flag does exist,
+# Continue requesting file path until valid file path is provided and return file path.
+
 def input_parser(file_path_parser, file_which, file_type, interview_request_final):
+    """Returns list of file paths"""
     if interview_request_final is False:
         item_list = []
         if type(file_path_parser) is list:
@@ -80,21 +92,23 @@ def input_parser(file_path_parser, file_which, file_type, interview_request_fina
         return file_path_parser
 
 def main_csv(file_path,interview_request = False):
+    """Returns main_csv file when called"""
     return input_parser(file_path, "main", "csv", interview_request)
 
 def source_csv(file_path,interview_request = False):
+    """Returns source_csv files when called"""
     return input_parser(file_path, "source", "csv", interview_request)
 
 def report_xlsx(file_path,interview_request = False):
+    """Returns report_xlsx file when called"""
     return input_parser(file_path, "report", "xlsx", interview_request)
 
-# Returns common_column when called
 def common_column(search_column):
+    """Returns common_column when called"""
     return search_column
 
 def main():
-    #  User-Input options
-    """ global api_options """
+    """Calls user_input and returns result"""
     try:
         api_options = user_input()
         if api_options.main_csv and api_options.source_csv and api_options.report_xlsx and api_options.common_column is not None:
