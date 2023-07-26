@@ -2,8 +2,6 @@
 
 import argparse
 import re
-import sys
-
 
 def user_input():
     """Command-line parameters"""
@@ -98,7 +96,7 @@ def input_parser(file_path_parser, file_which, file_type, interview_request_fina
         file_path_parser = file_validation(item, file_which, file_type)
         return file_path_parser
     else:
-        file_path_parser = file_validation(item, file_which, file_type)
+        file_path_parser = file_validation(file_path_parser, file_which, file_type)
         return file_path_parser
 
 def main_csv(file_path,interview_request = False):
