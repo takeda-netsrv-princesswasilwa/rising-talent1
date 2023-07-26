@@ -7,14 +7,14 @@ import sys
 
 def user_input():
     # Command-line parameters
-    # Code sourced from Eduardo Valdes
+    # user_input sourced from Eduardo Valdes
     parser = argparse.ArgumentParser( description='User-Input parameters' )
     parser.add_argument(
         '--interview',
         '-i',
         const=True,
-        dest='interview',
         nargs='?',
+        dest='interview',
         help='Calls the interview interface'
     )
     parser.add_argument(
@@ -28,6 +28,7 @@ def user_input():
     parser.add_argument(
         '--source_csv',
         '-s',
+        nargs='+',
         dest='source_csv',
         type=str,
         default=None,
@@ -71,8 +72,14 @@ def interview():
     return main_csv_path_final, source_csv_path_final, report_xlsx_path_final, search_column
 
 # Parses input
-def input_parser(file_path_parser, file_which, file_type, file_api, interview_request_final):
+def input_parser(file_path_parser, file_which, file_type, interview_request_final):
     if interview_request_final is False:
+        item_list = []
+        if type(file_path_parser) is list:
+            for item in file_path_parser:
+                if re.match(rf"\w*(.{file_type})$", item.lower()) is not None:
+                    item_list.append(item)
+            return item_list
         return file_path_parser
     else:
         while re.match(rf"\w*(.{file_type})$", file_path_parser.lower()) is None:
@@ -81,26 +88,31 @@ def input_parser(file_path_parser, file_which, file_type, file_api, interview_re
         return file_path_parser
 
 def main_csv(file_path,interview_request = False):
-    return input_parser(file_path, "main", "csv", api_options.main_csv, interview_request)
+    return input_parser(file_path, "main", "csv", interview_request)
 
 def source_csv(file_path,interview_request = False):
-    return input_parser(file_path, "source", "csv", api_options.source_csv, interview_request)
+    return input_parser(file_path, "source", "csv", interview_request)
 
 def report_xlsx(file_path,interview_request = False):
-    return input_parser(file_path, "report", "xlsx", api_options.report_xlsx, interview_request)
+    return input_parser(file_path, "report", "xlsx", interview_request)
 
 # Returns common_column when called
-def common_column(interview_request = False):
-    search_column = api_options.common_column
+def common_column(search_column):
     return search_column
 
 def main():
     #  User-Input options
-    global api_options
+    """ global api_options """
     try:
         api_options = user_input()
         if api_options.main_csv is not None:
-            print(main_csv(sys.argv[1:]))
+            print(main_csv(api_options.main_csv))
+        if api_options.source_csv is not None:
+            print(source_csv(api_options.source_csv))
+        if api_options.report_xlsx is not None:
+            print(report_xlsx(api_options.report_xlsx))
+        if api_options.common_column is not None:
+            print(common_column(api_options.common_column))
         else:
             print(interview())
     except Exception as script_error:
