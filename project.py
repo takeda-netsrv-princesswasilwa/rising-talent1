@@ -89,11 +89,14 @@ def input_parser(file_path_parser, file_which, file_type, interview_request_fina
                 if re.match(rf"\w*(.{file_type})$", item.lower()) is not None:
                     item_list.append(item)
                 item_list.append(file_validation(item, file_which, file_type, f": {item}."))
-            item_list.remove(None)
+                item_list.remove(None)
             return item_list
         if re.match(rf"\w*(.{file_type})$", file_path_parser.lower()) is not None:
-            return file_path_parser
-        file_path_parser = file_validation(item, file_which, file_type)
+            file_path_parser = file_validation(file_path_parser, file_which, file_type)
+            while file_validation(file_path_parser, file_which, file_type) is None:
+                file_path_parser = file_validation(file_path_parser, file_which, file_type)
+                return file_path_parser
+        file_path_parser = file_validation(file_path_parser, file_which, file_type)
         return file_path_parser
     else:
         file_path_parser = file_validation(file_path_parser, file_which, file_type)
