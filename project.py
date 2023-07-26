@@ -63,6 +63,13 @@ def interview():
     
     return main_csv_path_final, source_csv_path_final, report_xlsx_path_final, search_column
 
+def file_validation(file_checked, file_which_checked,file_type_checked, file_wrong = "."):
+    """Ensures proper file input format"""
+    while re.match(rf"\w*(.{file_type_checked})$", file_checked.lower()) is None:
+        print(f"Improper file{file_wrong} Format: *.{file_type_checked}")
+        file_checked = input(f"Enter {file_which_checked} {file_type_checked.upper()} path: ")
+        return file_checked
+
 # First input is file path,
 # Second input is main, source or report,
 # Third input is .csv or .xlsx,
@@ -83,21 +90,15 @@ def input_parser(file_path_parser, file_which, file_type, interview_request_fina
             for item in file_path_parser:
                 if re.match(rf"\w*(.{file_type})$", item.lower()) is not None:
                     item_list.append(item)
-                while re.match(rf"\w*(.{file_type})$", item.lower()) is None:
-                    print(f"Improper file. Format: *.{file_type}")
-                    item = input(f"Enter {file_which} {file_type.upper()} path: ")
-                    item_list.append(item)
+                item_list.append(file_validation(item, file_which, file_type, f": {item}."))
+            item_list.remove(None)
             return item_list
         if re.match(rf"\w*(.{file_type})$", file_path_parser.lower()) is not None:
             return file_path_parser
-        while re.match(rf"\w*(.{file_type})$", file_path_parser.lower()) is None:
-            print(f"Improper file. Format: *.{file_type}")
-            file_path_parser = input(f"Enter {file_which} {file_type.upper()} path: ")
+        file_path_parser = file_validation(item, file_which, file_type)
         return file_path_parser
     else:
-        while re.match(rf"\w*(.{file_type})$", file_path_parser.lower()) is None:
-            print(f"Improper file. Format: *.{file_type}")
-            file_path_parser = input(f"Enter {file_which} {file_type.upper()} path: ")
+        file_path_parser = file_validation(item, file_which, file_type)
         return file_path_parser
 
 def main_csv(file_path,interview_request = False):
