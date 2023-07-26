@@ -10,14 +10,6 @@ def user_input():
     # user_input sourced from Eduardo Valdes
     parser = argparse.ArgumentParser( description='User-Input parameters' )
     parser.add_argument(
-        '--interview',
-        '-i',
-        const=True,
-        nargs='?',
-        dest='interview',
-        help='Calls the interview interface'
-    )
-    parser.add_argument(
         '--main_csv',
         '-m',
         dest='main_csv',
@@ -105,16 +97,15 @@ def main():
     """ global api_options """
     try:
         api_options = user_input()
-        if api_options.main_csv is not None:
-            print(main_csv(api_options.main_csv))
-        if api_options.source_csv is not None:
-            print(source_csv(api_options.source_csv))
-        if api_options.report_xlsx is not None:
-            print(report_xlsx(api_options.report_xlsx))
-        if api_options.common_column is not None:
-            print(common_column(api_options.common_column))
+        if api_options.main_csv and api_options.source_csv and api_options.report_xlsx and api_options.common_column is not None:
+            output_list = []
+            output_list.append(main_csv(api_options.main_csv))
+            output_list.append(source_csv(api_options.source_csv))
+            output_list.append(report_xlsx(api_options.report_xlsx))
+            output_list.append(common_column(api_options.common_column))
+            print(output_list)
         else:
-            print(interview())
+            print(list(interview()))
     except Exception as script_error:
         print({"Type": type(script_error), "Error": script_error})
 
