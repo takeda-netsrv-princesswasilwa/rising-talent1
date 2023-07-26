@@ -124,6 +124,7 @@ def main():
             output_list.append(source_csv(api_options.source_csv))
             output_list.append(report_xlsx(api_options.report_xlsx))
             output_list.append(common_column(api_options.common_column))
+            print(output_list)
         else:
             print(list(interview()))
     except Exception as script_error:
