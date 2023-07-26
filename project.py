@@ -2,6 +2,7 @@
 
 import argparse
 import re
+import sys
 
 def user_input():
     """Command-line parameters"""
