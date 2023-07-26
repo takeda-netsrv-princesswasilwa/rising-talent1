@@ -131,4 +131,7 @@ def main():
         print({"Type": type(script_error), "Error": script_error})
 
 if __name__ == "__main__":
+    # This should be deleted
+    print("This is a test.")
+    # Delete prior
     main()
