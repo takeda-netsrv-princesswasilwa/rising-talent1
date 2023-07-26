@@ -2,7 +2,6 @@
 
 import argparse
 import re
-import sys
 
 def user_input():
     """Command-line parameters"""
@@ -67,7 +66,7 @@ def file_validation(file_checked, file_which_checked,file_type_checked, file_wro
     while re.match(rf"\w*(.{file_type_checked})$", file_checked.lower()) is None:
         print(f"Improper file{file_wrong} Format: *.{file_type_checked}")
         file_checked = input(f"Enter {file_which_checked} {file_type_checked.upper()} path: ")
-        return file_checked
+    return file_checked
 
 # First input is file path,
 # Second input is main, source or report,
@@ -90,11 +89,10 @@ def input_parser(file_path_parser, file_which, file_type, interview_request_fina
                 if re.match(rf"\w*(.{file_type})$", item.lower()) is not None:
                     item_list.append(item)
                 item_list.append(file_validation(item, file_which, file_type, f": {item}."))
-            item_list.remove(None)
             return item_list
         if re.match(rf"\w*(.{file_type})$", file_path_parser.lower()) is not None:
             return file_path_parser
-        file_path_parser = file_validation(item, file_which, file_type)
+        file_path_parser = file_validation(file_path_parser, file_which, file_type)
         return file_path_parser
     else:
         file_path_parser = file_validation(file_path_parser, file_which, file_type)
@@ -126,7 +124,6 @@ def main():
             output_list.append(source_csv(api_options.source_csv))
             output_list.append(report_xlsx(api_options.report_xlsx))
             output_list.append(common_column(api_options.common_column))
-            print(output_list)
         else:
             print(list(interview()))
     except Exception as script_error:
