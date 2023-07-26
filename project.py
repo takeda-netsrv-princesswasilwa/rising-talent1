@@ -83,7 +83,16 @@ def input_parser(file_path_parser, file_which, file_type, interview_request_fina
             for item in file_path_parser:
                 if re.match(rf"\w*(.{file_type})$", item.lower()) is not None:
                     item_list.append(item)
+                while re.match(rf"\w*(.{file_type})$", item.lower()) is None:
+                    print(f"Improper file. Format: *.{file_type}")
+                    item = input(f"Enter {file_which} {file_type.upper()} path: ")
+                    item_list.append(item)
             return item_list
+        if re.match(rf"\w*(.{file_type})$", file_path_parser.lower()) is not None:
+            return file_path_parser
+        while re.match(rf"\w*(.{file_type})$", file_path_parser.lower()) is None:
+            print(f"Improper file. Format: *.{file_type}")
+            file_path_parser = input(f"Enter {file_which} {file_type.upper()} path: ")
         return file_path_parser
     else:
         while re.match(rf"\w*(.{file_type})$", file_path_parser.lower()) is None:
